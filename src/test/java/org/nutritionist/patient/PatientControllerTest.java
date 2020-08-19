@@ -22,7 +22,7 @@ public class PatientControllerTest {
     @Test
     public void AddPatientsShouldReturnSuccessMessage() throws  Exception{
         this.mockMvc.perform( get("/addPatient")
-                    .param("name","Patricia")
+                    .param("name","Patricia Yolanda")
                     .param("age", "25")
                     .param("weight","10")
                     .param("height","10")
@@ -30,7 +30,7 @@ public class PatientControllerTest {
                 .andExpect(jsonPath("$.response").value("A new patient was added"));
 
         this.mockMvc.perform( get("/addPatient")
-                .param("name","Oscar")
+                .param("name","Oscar Ismael")
                 .param("age", "25")
                 .param("weight","1.89")
                 .param("height","100")
