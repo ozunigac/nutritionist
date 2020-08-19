@@ -1,2 +1,6 @@
-org\nutriologist\patient\Patient.class
-org\nutriologist\patient\PatientController.class
+org\nutritionist\NutritionistApplication.class
+org\nutritionist\utils\Response.class
+org\nutritionist\patient\Patient.class
+org\nutritionist\patient\PatientController.class
+org\nutritionist\patient\PatientServiceImpl.class
+org\nutritionist\patient\PatientService.class
