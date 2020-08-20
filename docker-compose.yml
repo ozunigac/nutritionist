@@ -1,7 +1,7 @@
-version: '1'
+version: '2'
 
 services:
-  solitaire:
+  nutriologist:
     build: .
     ports:
       - 3000:80
