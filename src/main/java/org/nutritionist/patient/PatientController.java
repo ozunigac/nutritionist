@@ -2,6 +2,7 @@ package org.nutritionist.patient;
 
 import org.nutritionist.utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,12 +21,12 @@ public class PatientController {
         return new Response("A new patient was added");
     }
     @GetMapping("/getPatientByName")
-    public ModelAndView GetPatientByName(@RequestParam String name){
-        ModelAndView modelMap = new ModelAndView("patient/patientDetail");
+    public ModelMap GetPatientByName(@RequestParam String name){
+        ModelMap modelMap = new ModelMap();
         try {
-            modelMap.addObject("patient", patientService.GetPatientByName(name));
+            modelMap.addAttribute("patient", patientService.GetPatientByName(name));
         }catch(Exception ex){
-            modelMap.addObject("Error", ex);
+            modelMap.addAttribute("Error", ex);
         }
         return modelMap;
     }

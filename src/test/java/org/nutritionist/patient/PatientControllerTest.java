@@ -1,11 +1,9 @@
 package org.nutritionist.patient;
 
+import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import static org.hamcrest.Matchers.hasProperty;
-import static org.hamcrest.Matchers.is;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,12 +37,8 @@ public class PatientControllerTest {
 
         mockMvc.perform(get("/getPatientByName")
                     .param("name","Oscar Ismael")
-                )
-                .andExpect(model().attribute("patient", hasProperty("name", is("Oscar Ismael"))))
-                .andExpect(model().attribute("patient", hasProperty("age", is("25"))))
-                .andExpect(model().attribute("patient", hasProperty("weight", is("10"))))
-                .andExpect(model().attribute("patient", hasProperty("height", is("10"))))
-                .andExpect(view().name("patient/patientDetail"));
+                ).andExpect(status().isOk())
+                .andExpect(jsonPath("$.patient[*]", hasSize(4)));
     }
 
 }
