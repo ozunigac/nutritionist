@@ -12,7 +12,12 @@ public class PatientServiceImpl implements PatientService{
         patients.add(patient);
     }
 
-    public ArrayList<Patient> GetPatients(){
-        return patients;
+    public Patient GetPatientByName(String name) throws Exception{
+        for (int i=0; i < patients.size() ; i++){
+            if(patients.get(i).getName().equals(name)){
+                return patients.get(i);
+            }
+        }
+        throw new Exception ("No patient was found.");
     }
 }

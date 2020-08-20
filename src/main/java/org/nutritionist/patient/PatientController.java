@@ -5,8 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class PatientController {
@@ -20,8 +19,14 @@ public class PatientController {
         patientService.AddNewPatient(patient);
         return new Response("A new patient was added");
     }
-    @GetMapping("/getPatients")
-    public ArrayList<Patient> GetPatients(){
-        return patientService.GetPatients();
+    @GetMapping("/getPatientByName")
+    public ModelAndView GetPatientByName(@RequestParam String name){
+        ModelAndView modelMap = new ModelAndView("patient/patientDetail");
+        try {
+            modelMap.addObject("patient", patientService.GetPatientByName(name));
+        }catch(Exception ex){
+            modelMap.addObject("Error", ex);
+        }
+        return modelMap;
     }
 }
