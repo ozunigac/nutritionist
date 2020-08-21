@@ -50,6 +50,7 @@ public class Patient {
                 "Name:" + name + "\n"+
                 "Age:" + age + "\n"+
                 "Weight: " + weight + "\n"+
-                "Height: " + height + "\n";
+                "Height: " + height + "\n"+
+                "Prueba";
     }
 }
